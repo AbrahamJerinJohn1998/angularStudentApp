@@ -7,7 +7,26 @@ import { StudentEntryComponent } from './student-entry/student-entry.component';
 import { ViewAllStudentsComponent } from './view-all-students/view-all-students.component';
 import { StudentSearchComponent } from './student-search/student-search.component';
 import { StudentdeleteComponent } from './studentdelete/studentdelete.component';
+import { Route, RouterModule, Routes } from '@angular/router';
 
+ const myRoute:Routes=[
+  {
+    path:"",
+    component :StudentEntryComponent
+  },
+  {
+    path:"search",
+    component:StudentSearchComponent
+  },
+  {
+    path:"delete",
+    component:StudentdeleteComponent
+  },
+  {
+    path:"viewallstudents",
+    component:ViewAllStudentsComponent
+  }
+ ]
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +37,8 @@ import { StudentdeleteComponent } from './studentdelete/studentdelete.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(myRoute)
   ],
   providers: [],
   bootstrap: [AppComponent]
