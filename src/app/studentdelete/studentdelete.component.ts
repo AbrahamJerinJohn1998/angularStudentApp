@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class StudentdeleteComponent {
 
+  admissionNo=""
+  readValues=()=>
+  {
+  
+  let data:any={"admissionNo":this.admissionNo}
+  console.log(data)
+  }
 }
