@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class StudentSearchComponent {
 
+  admissionNo=""
+  readValues=()=>
+  {
+  
+  let data:any={"admissionNo":this.admissionNo}
+  console.log(data)
+  }
 }
