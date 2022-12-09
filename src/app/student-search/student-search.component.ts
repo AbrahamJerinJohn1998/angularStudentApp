@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-student-search',
@@ -6,12 +7,45 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-search.component.css']
 })
 export class StudentSearchComponent {
-
   admissionNo=""
-  readValues=()=>
+  constructor(private api:ApiService){}
+  searchData:any=[]
+  readValue=()=>
   {
+    let data:any={"admissionNo":this.admissionNo}
+    console.log(data)
+    this.api.searchStudent(data).subscribe(
+      (response:any)=>
+      {
+        console.log(response)
+        if(response.length==0)
+        {
+          alert("invalid admission no")
+        }
+        else{
+          this.searchData=response
+        }
+      }
+    )
+  }
   
-  let data:any={"admissionNo":this.admissionNo}
-  console.log(data)
+  deleteBtnClick=(id:any)=>
+  {
+    let data:any={"id":id}
+    this.api.deleteStudent(data).subscribe(
+      (response:any)=>
+      {
+        console.log(response)
+        if(response.status=="success")
+        {
+          alert("deleted")
+          window.location.reload()
+        }
+        else
+        {
+          alert("something went wrong")
+        }
+      }
+    )
   }
 }
